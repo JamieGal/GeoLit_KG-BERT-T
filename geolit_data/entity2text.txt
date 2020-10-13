@@ -1,0 +1,289 @@
+backshore_depositional_environment	backshore depositional environment
+orrin_formation	orrin formation
+calcareous_nannofossils	calcareous nannofossils
+westray_group	westray group
+macbeth_formation	macbeth formation
+fraserburgh_formation	fraserburgh formation
+foreshore_depositional_environment	foreshore depositional environment
+carrack_formation	carrack formation
+shallow_marine_to_deep_marine_depositional_environment	shallow marine to deep marine depositional environment
+upper_cretaceous_epoch	upper cretaceous epoch
+outer_shelf_depositional_environment	outer shelf depositional environment
+yoredale_formation	yoredale formation
+pegmatite	pegmatite
+igneous_intrusive_rock	igneous intrusive rock
+blakeney_formation	blakeney formation
+farne_group	farne group
+shelf_depositional_environment	shelf depositional environment
+tidal_platform	tidal platform
+beauly_formation	beauly formation
+igneous_rock	igneous rock
+non_foliated_rocks	non foliated rocks
+phosphatic_fossil	phosphatic fossil
+depositional_environment	depositional environment
+shetland_group	shetland group
+nansen_formation	nansen formation
+shearwater_salt_formation	shearwater salt formation
+scoria	scoria
+tidal_flat_depositional_environment	tidal flat depositional environment
+pollen_spores	pollen spores
+limestone	limestone
+paleogene_period	paleogene period
+middle_triassic	middle triassic
+cook_formation	cook formation
+fossil	fossil
+bosies_bank_formation	bosies bank formation
+lower_cretaceous	lower cretaceous
+metamorphic_non_foliated_rock	metamorphic non foliated rock
+inge_volcanic_deposits_formation	inge volcanic deposits formation
+cenozoic_era	cenozoic era
+geochronologic_time	geochronologic time
+andesite	andesite
+metamorphic_foliated_rock	metamorphic foliated rock
+millstone_grit_formation	millstone grit formation
+conodonts	conodonts
+brae_formation	brae formation
+findhorn_formation	findhorn formation
+fluvio_deltaic_depositional_environment	fluvio deltaic depositional environment
+heather_formation	heather formation
+sele_formation	sele formation
+inner_shelf_depositional_environment	inner shelf depositional environment
+deltaic_depositional_environment	deltaic depositional environment
+caister_coal_formation	caister coal formation
+carbonate	carbonate
+skagerrak_formation	skagerrak formation
+rock	rock
+granite	granite
+evaporites	evaporites
+quaternary	quaternary
+alluvial_fan	alluvial fan
+organic_rich_shale	organic rich shale
+dinoflagellates	dinoflagellates
+upper_jurassic	upper jurassic
+conybeare_group	conybeare group
+northern_north_sea	northern north sea
+tuff	tuff
+tarbert_formation	tarbert formation
+burton_formation	burton formation
+alluvial_depositional_environment	alluvial depositional environment
+zechsteinkalk_formation	zechsteinkalk formation
+horda_formation	horda formation
+rotersalzton_formation	rotersalzton formation
+piper_formation	piper formation
+aller_halite_formation	aller halite formation
+ladys_walk_formation	ladys walk formation
+organic_walled_fossil	organic walled fossil
+phyllite	phyllite
+geological_unit	geological unit
+auk_formation	auk formation
+coastal_to_shallow_marine_depositional_environment	coastal to shallow marine depositional environment
+marl	marl
+salt	salt
+andesite_lava	andesite lava
+mains_formation	mains formation
+balder_formation	balder formation
+upper_triassic	upper triassic
+dolostone	dolostone
+cretaceous_period	cretaceous period
+brig_formation	brig formation
+radiolarians	radiolarians
+stassfurt_halite_formation	stassfurt halite formation
+lark_formation	lark formation
+beatrice_formation	beatrice formation
+mesozoic_era	mesozoic era
+heron_group	heron group
+basalanhydrit_formation	basalanhydrit formation
+delta	delta
+hugin_formation	hugin formation
+triton_formation	triton formation
+lacustrine_depositional_environment	lacustrine depositional environment
+dacite	dacite
+marine_depositional_environment	marine depositional environment
+moray_group	moray group
+coastal_plain	coastal plain
+dunrobin_bay_group	dunrobin bay group
+rotliegend_group	rotliegend group
+skade_formation	skade formation
+schooner_formation	schooner formation
+matter	matter
+dunlin_group	dunlin group
+oligocene	oligocene
+gabbro	gabbro
+tidal_depositional_environment	tidal depositional environment
+herring_formation	herring formation
+silicoflagellates	silicoflagellates
+statfjord_formation	statfjord formation
+bowland_shale_formation	bowland shale formation
+calcareous_fossil	calcareous fossil
+banks_group	banks group
+brent_group	brent group
+open_marine	open marine
+quartzite	quartzite
+clinoforms	clinoforms
+brora_coal_formation	brora coal formation
+lower_triassic_epoch	lower triassic epoch
+ekofisk_formation	ekofisk formation
+smith_bank_formation	smith bank formation
+transitional_depositional_environment	transitional depositional environment
+hauptdolomit_formation	hauptdolomit formation
+phanerozoic_eon	phanerozoic eon
+marble	marble
+quaternary_period	quaternary period
+hauptanhydrit_formation	hauptanhydrit formation
+conglomerate	conglomerate
+jorsalfare_formation	jorsalfare formation
+agglutinated_foraminifera	agglutinated foraminifera
+halite	halite
+ness_formation	ness formation
+alluvial_channel	alluvial channel
+basalt	basalt
+dowsing_formation	dowsing formation
+bunter_sandstone_formation	bunter sandstone formation
+shallow_marine_depositional_environment	shallow marine depositional environment
+pegmatitanhydrit_formation	pegmatitanhydrit formation
+fladen_group	fladen group
+lower_triassic	lower triassic
+triassic	triassic
+obsidian	obsidian
+flounder_formation	flounder formation
+mudstone	mudstone
+tor_formation	tor formation
+cromer_knoll_group	cromer knoll group
+wick_sandstone_formation	wick sandstone formation
+pentland_formation	pentland formation
+upper_carboniferous	upper carboniferous
+triassic_period	triassic period
+sedimentary_rock	sedimentary rock
+spiculite	spiculite
+whitehurst_group	whitehurst group
+werraanhydrit_formation	werraanhydrit formation
+shale	shale
+rannoch_formation	rannoch formation
+grid_sandstone_member	grid sandstone member
+etive_formation	etive formation
+mackerel_formation	mackerel formation
+scolt_head_formation	scolt head formation
+golspie_formation	golspie formation
+svarte_formation	svarte formation
+schist	schist
+jurassic	jurassic
+grauer_salzton_formation	grauer salzton formation
+siliceous_fossil	siliceous fossil
+diatoms	diatoms
+turbot_anhydrite_formation	turbot anhydrite formation
+cormorant_formation	cormorant formation
+ostracods	ostracods
+chitinozoans	chitinozoans
+anhydrite	anhydrite
+halibut_carbonate_formation	halibut carbonate formation
+lagoonal_depositional_environment	lagoonal depositional environment
+cretaceous	cretaceous
+upper_jurassic_epoch	upper jurassic epoch
+palynomorphs	palynomorphs
+slope_depositional_environment	slope depositional environment
+chalk	chalk
+hidra_formation	hidra formation
+coal	coal
+upper_coastal_plain	upper coastal plain
+lower_shoreface_depositional_environment	lower shoreface depositional environment
+beach_depositional_environment	beach depositional environment
+dudgeon_formation	dudgeon formation
+chalk_group	chalk group
+rhyolite	rhyolite
+agglutinated_fossil	agglutinated fossil
+shoreface_depositional_environment	shoreface depositional environment
+lower_cretaceous_epoch	lower cretaceous epoch
+upper_cretaceous	upper cretaceous
+fluvial_channel	fluvial channel
+abyssal_channel	abyssal channel
+fulmar_formation	fulmar formation
+bacton_group	bacton group
+plattendolomit_formation	plattendolomit formation
+cementstone_formation	cementstone formation
+reefal_depositional_environment	reefal depositional environment
+mid_triassic	mid triassic
+drake_formation	drake formation
+britannia_sandstone_formation	britannia sandstone formation
+subtidal_platform	subtidal platform
+amundsen_formation	amundsen formation
+stotfield_calcrete_formation	stotfield calcrete formation
+stronsay_group	stronsay group
+lower_jurassic_epoch	lower jurassic epoch
+broom_formation	broom formation
+lower_coastal_plain	lower coastal plain
+carboniferous_period	carboniferous period
+breccia	breccia
+southern_north_sea	southern north sea
+deep_marine_depositional_environment	deep marine depositional environment
+lower_permian	lower permian
+paleozoic_era	paleozoic era
+fluvio_lacustrine_depositional_environment	fluvio lacustrine depositional environment
+humemberer_group	humemberer group
+siltstone	siltstone
+leine_halite_formation	leine halite formation
+glacial_depositional_environment	glacial depositional environment
+chert	chert
+middle_jurassic	middle jurassic
+turbidity-flow_deposit	turbidity-flow deposit
+maureen_formation	maureen formation
+scremerston_formation	scremerston formation
+montrose_group	montrose group
+haisborough_group	haisborough group
+continental_depositional_environment	continental depositional environment
+eocene	eocene
+fell_sandstone_formation	fell sandstone formation
+middle_triassic_epoch	middle triassic epoch
+volcanic_deposits	volcanic deposits
+emerald_formation	emerald formation
+coaly_shale	coaly shale
+mid_carboniferous	mid carboniferous
+zechstein_group	zechstein group
+central_north_sea	central north sea
+upper_permian	upper permian
+volcanic_depositional_environment	volcanic depositional environment
+acritarchs	acritarchs
+sandstone	sandstone
+lower_carboniferous	lower carboniferous
+pumice	pumice
+delta_front_depositional_environment	delta front depositional environment
+speke_formation	speke formation
+hopeman_sandstone_formation	hopeman sandstone formation
+jurassic_period	jurassic period
+lower_jurassic	lower jurassic
+slate	slate
+valhall_formation	valhall formation
+gneiss	gneiss
+sedimentary_rocks	sedimentary rocks
+aeolian_depositional_environment	aeolian depositional environment
+peridotite	peridotite
+tay_sandstone_member	tay sandstone member
+permian_period	permian period
+darwin_formation	darwin formation
+fluvial_depositional_environment	fluvial depositional environment
+carboniferous	carboniferous
+mousa_formation	mousa formation
+uppershoreface_depositional_environment	uppershoreface depositional environment
+middle_jurassic_epoch	middle jurassic epoch
+paleocene	paleocene
+lithostratigraphic_unit	lithostratigraphic unit
+grenzanhydrit_formation	grenzanhydrit formation
+permian	permian
+bunter_shale_formation	bunter shale formation
+dornoch_formation	dornoch formation
+metamorphic_rock	metamorphic rock
+lista_formation	lista formation
+neogene_period	neogene period
+westoe_coal_formation	westoe coal formation
+kupferschiefer_formation	kupferschiefer formation
+upper_triassic_epoch	upper triassic epoch
+prodelta_depositional_environment	prodelta depositional environment
+rodby_formation	rodby formation
+delta_plain_depositional_environment	delta plain depositional environment
+diorite	diorite
+kyrre_formation	kyrre formation
+lossiehead_formation	lossiehead formation
+abyssal_fan	abyssal fan
+volcanic_tuff	volcanic tuff
+neogene	neogene
+foraminifera	foraminifera
+igneous_extrusive_rock	igneous extrusive rock

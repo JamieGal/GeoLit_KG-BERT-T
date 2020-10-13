@@ -1,0 +1,9 @@
+deposited_in	deposited in
+sub_class_of	sub class of
+contains	contains
+has_age	has age
+is_member_of	is member of
+has_direct_next	has direct next
+constituted_by	constituted by
+type	type
+located_in	located in

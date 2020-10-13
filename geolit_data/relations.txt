@@ -1,0 +1,9 @@
+deposited_in
+sub_class_of
+contains
+has_age
+is_member_of
+has_direct_next
+constituted_by
+type
+located_in
