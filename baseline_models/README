@@ -4,5 +4,8 @@ Folder contains baseline models TransE and DistMult
 
 Requirements;
 
+TesnorFlow versio 1.x
+
 Ampligraph
+! pip install ampligraph
 
