@@ -1,0 +1,2259 @@
+@prefix : <http://no.sirius.ontology/geological-ontology#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <urn:absolute:GeoLit2> .
+
+<urn:absolute:GeoLit2> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://no.sirius.ontology/geological-ontology#constitutedBy
+:constitutedBy rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty ;
+               rdfs:range :Matter .
+
+
+###  http://no.sirius.ontology/geological-ontology#contains
+:contains rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  http://no.sirius.ontology/geological-ontology#depositedIn
+:depositedIn rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf owl:topObjectProperty ;
+             rdfs:range :DepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#hasAge
+:hasAge rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf owl:topObjectProperty ;
+        rdfs:range :GeochronologicTime .
+
+
+###  http://no.sirius.ontology/geological-ontology#hasDirectNext
+:hasDirectNext rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :hasDirectPrevious ,
+                                  :hasNext ;
+               owl:inverseOf :hasDirectPrevious .
+
+
+###  http://no.sirius.ontology/geological-ontology#hasDirectPrevious
+:hasDirectPrevious rdf:type owl:ObjectProperty .
+
+
+###  http://no.sirius.ontology/geological-ontology#hasNext
+:hasNext rdf:type owl:ObjectProperty ;
+         owl:equivalentProperty [ owl:inverseOf :hasPrevious
+                                ] ;
+         owl:inverseOf :hasPrevious ;
+         owl:propertyChainAxiom ( :hasDirectNext
+                                ) .
+
+
+###  http://no.sirius.ontology/geological-ontology#hasPrevious
+:hasPrevious rdf:type owl:ObjectProperty ;
+             owl:equivalentProperty [ owl:inverseOf :hasNext
+                                    ] ;
+             owl:propertyChainAxiom ( :hasDirectPrevious
+                                    ) .
+
+
+###  http://no.sirius.ontology/geological-ontology#isMemberOf
+:isMemberOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf owl:topObjectProperty ;
+            rdfs:range :GeologicalObject .
+
+
+###  http://no.sirius.ontology/geological-ontology#locatedIn
+:locatedIn rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://no.sirius.ontology/geological-ontology#AeolianDepositionalEnvironment
+:AeolianDepositionalEnvironment rdf:type owl:Class ;
+                                rdfs:subClassOf :ContinentalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#AgglutinatedFossil
+:AgglutinatedFossil rdf:type owl:Class ;
+                    rdfs:subClassOf :Fossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#AlluvialDepositionalEnvironment
+:AlluvialDepositionalEnvironment rdf:type owl:Class ;
+                                 rdfs:subClassOf :ContinentalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#BeachDepositionalEnvironment
+:BeachDepositionalEnvironment rdf:type owl:Class ;
+                              rdfs:subClassOf :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#CalcareousFossil
+:CalcareousFossil rdf:type owl:Class ;
+                  rdfs:subClassOf :Fossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#CarboniferousPeriod
+:CarboniferousPeriod rdf:type owl:Class ;
+                     rdfs:subClassOf :PaleozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#CenozoicEra
+:CenozoicEra rdf:type owl:Class ;
+             rdfs:subClassOf :PhanerozoicEon .
+
+
+###  http://no.sirius.ontology/geological-ontology#ContinentalDepositionalEnvironment
+:ContinentalDepositionalEnvironment rdf:type owl:Class ;
+                                    rdfs:subClassOf :DepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#CretaceousPeriod
+:CretaceousPeriod rdf:type owl:Class ;
+                  rdfs:subClassOf :MesozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#DeepMarineDepositionalEnvironment
+:DeepMarineDepositionalEnvironment rdf:type owl:Class ;
+                                   rdfs:subClassOf :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#DeltaicDepositionalEnvironment
+:DeltaicDepositionalEnvironment rdf:type owl:Class ;
+                                rdfs:subClassOf :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#DepositionalEnvironment
+:DepositionalEnvironment rdf:type owl:Class .
+
+
+###  http://no.sirius.ontology/geological-ontology#FluvialDepositionalEnvironment
+:FluvialDepositionalEnvironment rdf:type owl:Class ;
+                                rdfs:subClassOf :ContinentalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Fossil
+:Fossil rdf:type owl:Class ;
+        rdfs:subClassOf :Matter ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :depositedIn ;
+                          owl:someValuesFrom :DepositionalEnvironment
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :depositedIn ;
+                          owl:someValuesFrom :Rock
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :hasAge ;
+                          owl:someValuesFrom :GeochronologicTime
+                        ] .
+
+
+###  http://no.sirius.ontology/geological-ontology#GeoArea
+:GeoArea rdf:type owl:Class ;
+         rdfs:subClassOf :Location .
+
+
+###  http://no.sirius.ontology/geological-ontology#GeochronologicTime
+:GeochronologicTime rdf:type owl:Class .
+
+
+###  http://no.sirius.ontology/geological-ontology#GeologicalObject
+:GeologicalObject rdf:type owl:Class ;
+                  rdfs:subClassOf :GeochronologicTime ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :constitutedBy ;
+                                    owl:someValuesFrom :Matter
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :hasAge ;
+                                    owl:someValuesFrom :GeochronologicTime
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :locatedIn ;
+                                    owl:someValuesFrom :Location
+                                  ] ,
+                                  [ rdf:type owl:Restriction ;
+                                    owl:onProperty :depositedIn ;
+                                    owl:allValuesFrom :DepositionalEnvironment
+                                  ] .
+
+
+###  http://no.sirius.ontology/geological-ontology#GeologicalUnit
+:GeologicalUnit rdf:type owl:Class ;
+                rdfs:subClassOf :GeologicalObject .
+
+
+###  http://no.sirius.ontology/geological-ontology#GlacialDepositionalEnvironment
+:GlacialDepositionalEnvironment rdf:type owl:Class ;
+                                rdfs:subClassOf :DepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#IgneousExtrusiveRock
+:IgneousExtrusiveRock rdf:type owl:Class ;
+                      rdfs:subClassOf :IgneousRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#IgneousIntrusiveRock
+:IgneousIntrusiveRock rdf:type owl:Class ;
+                      rdfs:subClassOf :IgneousRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#IgneousRock
+:IgneousRock rdf:type owl:Class ;
+             rdfs:subClassOf :Rock .
+
+
+###  http://no.sirius.ontology/geological-ontology#JurassicPeriod
+:JurassicPeriod rdf:type owl:Class ;
+                rdfs:subClassOf :MesozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#LacustrineDepositionalEnvironment
+:LacustrineDepositionalEnvironment rdf:type owl:Class ;
+                                   rdfs:subClassOf :ContinentalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#LagoonalDepositionalEnvironment
+:LagoonalDepositionalEnvironment rdf:type owl:Class ;
+                                 rdfs:subClassOf :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#LithostratigraphicUnit
+:LithostratigraphicUnit rdf:type owl:Class ;
+                        rdfs:subClassOf :GeologicalUnit ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :constitutedBy ;
+                                          owl:someValuesFrom :Rock
+                                        ] ,
+                                        [ rdf:type owl:Restriction ;
+                                          owl:onProperty :depositedIn ;
+                                          owl:allValuesFrom :DepositionalEnvironment
+                                        ] .
+
+
+###  http://no.sirius.ontology/geological-ontology#Location
+:Location rdf:type owl:Class ;
+          rdfs:subClassOf [ rdf:type owl:Restriction ;
+                            owl:onProperty :locatedIn ;
+                            owl:someValuesFrom :Location
+                          ] .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerCretaceousEpoch
+:LowerCretaceousEpoch rdf:type owl:Class ;
+                      rdfs:subClassOf :CretaceousPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerJurassicEpoch
+:LowerJurassicEpoch rdf:type owl:Class ;
+                    rdfs:subClassOf :JurassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerTriassicEpoch
+:LowerTriassicEpoch rdf:type owl:Class ;
+                    rdfs:subClassOf :TriassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#MarineDepositionalEnvironment
+:MarineDepositionalEnvironment rdf:type owl:Class ;
+                               rdfs:subClassOf :DepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Matter
+:Matter rdf:type owl:Class .
+
+
+###  http://no.sirius.ontology/geological-ontology#MesozoicEra
+:MesozoicEra rdf:type owl:Class ;
+             rdfs:subClassOf :PhanerozoicEon .
+
+
+###  http://no.sirius.ontology/geological-ontology#MetamorphicFoliatedRock
+:MetamorphicFoliatedRock rdf:type owl:Class ;
+                         rdfs:subClassOf :MetamorphicRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#MetamorphicNonFoliatedRock
+:MetamorphicNonFoliatedRock rdf:type owl:Class ;
+                            rdfs:subClassOf :MetamorphicRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#MetamorphicRock
+:MetamorphicRock rdf:type owl:Class ;
+                 rdfs:subClassOf :Rock .
+
+
+###  http://no.sirius.ontology/geological-ontology#MiddleJurassicEpoch
+:MiddleJurassicEpoch rdf:type owl:Class ;
+                     rdfs:subClassOf :JurassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#MiddleTriassicEpoch
+:MiddleTriassicEpoch rdf:type owl:Class ;
+                     rdfs:subClassOf :TriassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#NeogenePeriod
+:NeogenePeriod rdf:type owl:Class ;
+               rdfs:subClassOf :CenozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#OrganicWalledFossil
+:OrganicWalledFossil rdf:type owl:Class ;
+                     rdfs:subClassOf :Fossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#PaleogenePeriod
+:PaleogenePeriod rdf:type owl:Class ;
+                 rdfs:subClassOf :CenozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#PaleozoicEra
+:PaleozoicEra rdf:type owl:Class ;
+              rdfs:subClassOf :PhanerozoicEon .
+
+
+###  http://no.sirius.ontology/geological-ontology#PermianPeriod
+:PermianPeriod rdf:type owl:Class ;
+               rdfs:subClassOf :PaleozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#PhanerozoicEon
+:PhanerozoicEon rdf:type owl:Class ;
+                rdfs:subClassOf :GeochronologicTime .
+
+
+###  http://no.sirius.ontology/geological-ontology#PhosphaticFossil
+:PhosphaticFossil rdf:type owl:Class ;
+                  rdfs:subClassOf :Fossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#QuaternaryPeriod
+:QuaternaryPeriod rdf:type owl:Class ;
+                  rdfs:subClassOf :CenozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#Rock
+:Rock rdf:type owl:Class ;
+      rdfs:subClassOf :Matter ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :depositedIn ;
+                        owl:someValuesFrom :DepositionalEnvironment
+                      ] ,
+                      [ rdf:type owl:Restriction ;
+                        owl:onProperty :hasAge ;
+                        owl:someValuesFrom :GeochronologicTime
+                      ] .
+
+
+###  http://no.sirius.ontology/geological-ontology#SedimentaryRock
+:SedimentaryRock rdf:type owl:Class ;
+                 rdfs:subClassOf :Rock .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShallowMarineDepositionalEnvironment
+:ShallowMarineDepositionalEnvironment rdf:type owl:Class ;
+                                      rdfs:subClassOf :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#SiliceousFossil
+:SiliceousFossil rdf:type owl:Class ;
+                 rdfs:subClassOf :Fossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#TidalDepositionalEnvironment
+:TidalDepositionalEnvironment rdf:type owl:Class ;
+                              rdfs:subClassOf :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#TransitionalDepositionalEnvironment
+:TransitionalDepositionalEnvironment rdf:type owl:Class ;
+                                     rdfs:subClassOf :DepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#TriassicPeriod
+:TriassicPeriod rdf:type owl:Class ;
+                rdfs:subClassOf :MesozoicEra .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperCretaceousEpoch
+:UpperCretaceousEpoch rdf:type owl:Class ;
+                      rdfs:subClassOf :CretaceousPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperJurassicEpoch
+:UpperJurassicEpoch rdf:type owl:Class ;
+                    rdfs:subClassOf :JurassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperTriassicEpoch
+:UpperTriassicEpoch rdf:type owl:Class ;
+                    rdfs:subClassOf :TriassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#VolcanicDepositionalEnvironment
+:VolcanicDepositionalEnvironment rdf:type owl:Class ;
+                                 rdfs:subClassOf :DepositionalEnvironment .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://no.sirius.ontology/geological-ontology#AbyssalChannel
+:AbyssalChannel rdf:type owl:NamedIndividual ,
+                         :DeepMarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#AbyssalFan
+:AbyssalFan rdf:type owl:NamedIndividual ,
+                     :DeepMarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Acritarchs
+:Acritarchs rdf:type owl:NamedIndividual ,
+                     :SiliceousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#AeolianDepositionalEnv
+:AeolianDepositionalEnv rdf:type owl:NamedIndividual ,
+                                 :AeolianDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#AgglutinatedForaminifera
+:AgglutinatedForaminifera rdf:type owl:NamedIndividual ,
+                                   :AgglutinatedFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#AllerHaliteFm
+:AllerHaliteFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Halite ,
+                              :Mudstone ;
+               :depositedIn :ContinentalDepositionalEnv ;
+               :hasAge :UpperPermian ;
+               :isMemberOf :ZechsteinGp ;
+               :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#AlluvialChannel
+:AlluvialChannel rdf:type owl:NamedIndividual ,
+                          :AlluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#AlluvialDepositionalEnv
+:AlluvialDepositionalEnv rdf:type owl:NamedIndividual ,
+                                  :AlluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#AlluvialFan
+:AlluvialFan rdf:type owl:NamedIndividual ,
+                      :AlluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#AmundsenFm
+:AmundsenFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Mudstone ,
+                           :Sandstone ,
+                           :Siltstone ;
+            :contains :Palynomorphs ;
+            :depositedIn :MarineDepositionalEnv ;
+            :hasAge :LowerJurassic ;
+            :isMemberOf :DunlinGp ;
+            :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Andesite
+:Andesite rdf:type owl:NamedIndividual ,
+                   :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#AndesiteLava
+:AndesiteLava rdf:type owl:NamedIndividual ,
+                       :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Anhydrite
+:Anhydrite rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#AukFm
+:AukFm rdf:type owl:NamedIndividual ,
+                :LithostratigraphicUnit ;
+       :constitutedBy :Sandstone ;
+       :depositedIn :ContinentalDepositionalEnv ;
+       :hasAge :Permian ;
+       :isMemberOf :RotliegendGp ;
+       :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BackshoreDepositionalEnvironment
+:BackshoreDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                           :BeachDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#BactonGp
+:BactonGp rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#BalderFm
+:BalderFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Mudstone ;
+          :depositedIn :MarineDepositionalEnv ;
+          :hasAge :Eocene ;
+          :isMemberOf :MorayGp ;
+          :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BanksGp
+:BanksGp rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#BasalanhydritFm
+:BasalanhydritFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Anhydrite ,
+                                :Dolostone ;
+                 :depositedIn :TransitionalDepositionalEnv ;
+                 :hasAge :UpperPermian ;
+                 :isMemberOf :ZechsteinGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Basalt
+:Basalt rdf:type owl:NamedIndividual ,
+                 :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#BeachDepositionalEnvironment
+:BeachDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                       :BeachDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#BeatriceFm
+:BeatriceFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Sandstone ;
+            :depositedIn :MarineDepositionalEnv ;
+            :hasAge :MiddleJurassic ;
+            :isMemberOf :FladenGp ;
+            :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BeaulyFm
+:BeaulyFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Coal ,
+                         :Mudstone ,
+                         :Sandstone ;
+          :contains :Palynomorphs ;
+          :depositedIn :TransitionalDepositionalEnv ;
+          :hasAge :Eocene ;
+          :isMemberOf :MorayGp ;
+          :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BlakeneyFm
+:BlakeneyFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Anhydrite ,
+                           :Mudstone ,
+                           :Sandstone ;
+            :depositedIn :TransitionalDepositionalEnv ;
+            :hasAge :UpperPermian ;
+            :isMemberOf :ZechsteinGp ;
+            :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BosiesBankFm
+:BosiesBankFm rdf:type owl:NamedIndividual ,
+                       :LithostratigraphicUnit ;
+              :constitutedBy :Mudstone ,
+                             :Sandstone ,
+                             :Siltstone ;
+              :depositedIn :ContinentalDepositionalEnv ;
+              :hasAge :UpperPermian ;
+              :isMemberOf :ZechsteinGp ;
+              :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BowlandShaleFm
+:BowlandShaleFm rdf:type owl:NamedIndividual ,
+                         :LithostratigraphicUnit ;
+                :constitutedBy :Limestone ,
+                               :Mudstone ;
+                :depositedIn :MarineDepositionalEnv ;
+                :hasAge :MidCarboniferous ;
+                :isMemberOf :WhitehurstGp ;
+                :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BraeFm
+:BraeFm rdf:type owl:NamedIndividual ,
+                 :LithostratigraphicUnit ;
+        :constitutedBy :Conglomerate ,
+                       :Mudstone ,
+                       :Sandstone ;
+        :contains :Palynomorphs ;
+        :depositedIn :MarineDepositionalEnv ;
+        :hasAge :UpperJurassic ;
+        :isMemberOf :HumberGp ;
+        :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Breccia
+:Breccia rdf:type owl:NamedIndividual ,
+                  :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#BrentGp
+:BrentGp rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#BrigFm
+:BrigFm rdf:type owl:NamedIndividual ,
+                 :LithostratigraphicUnit ;
+        :constitutedBy :Mudstone ,
+                       :Sandstone ;
+        :depositedIn :ContinentalDepositionalEnv ;
+        :hasAge :UpperCarboniferous ;
+        :isMemberOf :ConybeareGp ;
+        :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BritanniaSandstoneFm
+:BritanniaSandstoneFm rdf:type owl:NamedIndividual ,
+                               :LithostratigraphicUnit ;
+                      :constitutedBy :Mudstone ,
+                                     :Sandstone ;
+                      :depositedIn :MarineDepositionalEnv ;
+                      :hasAge :LowerCretaceous ;
+                      :isMemberOf :CromerKnollGp ;
+                      :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BroomFm
+:BroomFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Sandstone ;
+         :depositedIn :TransitionalDepositionalEnv ;
+         :hasAge :MiddleJurassic ;
+         :isMemberOf :BrentGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BroraCoalFm
+:BroraCoalFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Coal ,
+                            :Mudstone ,
+                            :Sandstone ;
+             :contains :dinoflagellates ;
+             :depositedIn :ContinentalDepositionalEnv ;
+             :hasAge :MiddleJurassic ;
+             :isMemberOf :FladenGp ;
+             :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BunterSandstoneFm
+:BunterSandstoneFm rdf:type owl:NamedIndividual ,
+                            :LithostratigraphicUnit ;
+                   :constitutedBy :Mudstone ,
+                                  :Sandstone ;
+                   :depositedIn :ContinentalDepositionalEnv ;
+                   :hasAge :LowerTriassic ;
+                   :isMemberOf :BactonGp ;
+                   :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BunterShaleFm
+:BunterShaleFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Mudstone ,
+                              :Shale ;
+               :depositedIn :ContinentalDepositionalEnv ;
+               :hasAge :LowerTriassic ;
+               :isMemberOf :BactonGp ;
+               :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#BurtonFm
+:BurtonFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Mudstone ;
+          :depositedIn :MarineDepositionalEnv ;
+          :hasAge :LowerJurassic ;
+          :isMemberOf :DunlinGp ;
+          :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#CaisterCoalFm
+:CaisterCoalFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Coal ,
+                              :Sandstone ;
+               :depositedIn :TransitionalDepositionalEnv ;
+               :hasAge :UpperCarboniferous ;
+               :isMemberOf :ConybeareGp ;
+               :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#CalcareousNannofossils
+:CalcareousNannofossils rdf:type owl:NamedIndividual ,
+                                 :CalcareousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#Carbonate
+:Carbonate rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Carboniferous
+:Carboniferous rdf:type owl:NamedIndividual ,
+                        :CarboniferousPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#CarrackFm
+:CarrackFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Mudstone ,
+                          :Siltstone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :LowerCretaceous ;
+           :isMemberOf :CromerKnollGp ;
+           :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#CementstoneFm
+:CementstoneFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Mudstone ,
+                              :Sandstone ;
+               :depositedIn :ContinentalDepositionalEnv ;
+               :hasAge :LowerCarboniferous ;
+               :isMemberOf :FarneGp ;
+               :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#CentralNorthSea
+:CentralNorthSea rdf:type owl:NamedIndividual ,
+                          :GeoArea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Chalk
+:Chalk rdf:type owl:NamedIndividual ,
+                :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#ChalkGp
+:ChalkGp rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#Chert
+:Chert rdf:type owl:NamedIndividual ,
+                :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Chitinozoans
+:Chitinozoans rdf:type owl:NamedIndividual ,
+                       :SiliceousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#Clinoforms
+:Clinoforms rdf:type owl:NamedIndividual ,
+                     :DeltaicDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Coal
+:Coal rdf:type owl:NamedIndividual ,
+               :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#CoalyShale
+:CoalyShale rdf:type owl:NamedIndividual ,
+                     :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#CoastalPlain
+:CoastalPlain rdf:type owl:NamedIndividual ,
+                       :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#CoastalToShallowMarineDepositionalEnvironment
+:CoastalToShallowMarineDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                                        :MarineDepositionalEnvironment ,
+                                                        :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Conglomerate
+:Conglomerate rdf:type owl:NamedIndividual ,
+                       :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Conodonts
+:Conodonts rdf:type owl:NamedIndividual ,
+                    :PhosphaticFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#ContinentalDepositionalEnv
+:ContinentalDepositionalEnv rdf:type owl:NamedIndividual .
+
+
+###  http://no.sirius.ontology/geological-ontology#ConybeareGp
+:ConybeareGp rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#CookFm
+:CookFm rdf:type owl:NamedIndividual ,
+                 :LithostratigraphicUnit ;
+        :constitutedBy :Mudstone ,
+                       :Siltstone ;
+        :depositedIn :MarineDepositionalEnv ;
+        :hasAge :LowerJurassic ;
+        :isMemberOf :DunlinGp ;
+        :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#CormorantFm
+:CormorantFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Limestone ,
+                            :Mudstone ,
+                            :Sandstone ;
+             :depositedIn :ContinentalDepositionalEnv ;
+             :hasAge :Triassic ;
+             :isMemberOf :HeronGp ;
+             :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Cretaceous
+:Cretaceous rdf:type owl:NamedIndividual ,
+                     :CretaceousPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#CromerKnollGp
+:CromerKnollGp rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#Dacite
+:Dacite rdf:type owl:NamedIndividual ,
+                 :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#DarwinFm
+:DarwinFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Sandstone ,
+                         :Siltstone ;
+          :depositedIn :MarineDepositionalEnv ;
+          :hasAge :LowerJurassic ;
+          :isMemberOf :DunlinGp ;
+          :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#DeepMarineDepositionalEnvironment
+:DeepMarineDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                            :DeepMarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Delta
+:Delta rdf:type owl:NamedIndividual ,
+                :DeltaicDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#DeltaFrontDepositionalEnvironment
+:DeltaFrontDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                            :DeltaicDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#DeltaPlainDepositionalEnvironment
+:DeltaPlainDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                            :DeltaicDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Diatoms
+:Diatoms rdf:type owl:NamedIndividual ,
+                  :OrganicWalledFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#Dinoflagellates
+:Dinoflagellates rdf:type owl:NamedIndividual ,
+                          :SiliceousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#Diorite
+:Diorite rdf:type owl:NamedIndividual ,
+                  :IgneousIntrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Dolostone
+:Dolostone rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#DornochFm
+:DornochFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Mudstone ,
+                          :Sandstone ,
+                          :Siltstone ;
+           :contains :Diatoms ;
+           :depositedIn :TransitionalDepositionalEnv ;
+           :hasAge :Eocene ;
+           :isMemberOf :MorayGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#DowsingFm
+:DowsingFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Halite ,
+                          :Mudstone ;
+           :depositedIn :TransitionalDepositionalEnv ;
+           :hasAge :MidTriassic ;
+           :isMemberOf :HaisboroughGp ;
+           :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#DrakeFm
+:DrakeFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :LowerJurassic ;
+         :isMemberOf :DunlinGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#DudgeonFm
+:DudgeonFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Halite ,
+                          :Mudstone ;
+           :depositedIn :TransitionalDepositionalEnv ;
+           :hasAge :MidTriassic ;
+           :isMemberOf :HaisboroughGp ;
+           :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#DunlinGp
+:DunlinGp rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#DunrobinBayGp
+:DunrobinBayGp rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#EkofiskFm
+:EkofiskFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Limestone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :UpperCretaceous ;
+           :isMemberOf :ChalkGp ;
+           :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#EmeraldFm
+:EmeraldFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Limestone ,
+                          :Sandstone ,
+                          :Siltstone ;
+           :contains :Palynomorphs ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :UpperJurassic ;
+           :isMemberOf :HumberGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Eocene
+:Eocene rdf:type owl:NamedIndividual ,
+                 :PaleogenePeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#EtiveFm
+:EtiveFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Sandstone ;
+         :depositedIn :TransitionalDepositionalEnv ;
+         :hasAge :MiddleJurassic ;
+         :isMemberOf :BrentGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Evaporites
+:Evaporites rdf:type owl:NamedIndividual ,
+                     :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#FarneGp
+:FarneGp rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#FellSandstoneFm
+:FellSandstoneFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Mudstone ,
+                                :Sandstone ;
+                 :depositedIn :ContinentalDepositionalEnv ;
+                 :hasAge :LowerCarboniferous ;
+                 :isMemberOf :FarneGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#FindhornFm
+:FindhornFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Sandstone ;
+            :depositedIn :ContinentalDepositionalEnv ;
+            :hasAge :Permian ;
+            :isMemberOf :RotliegendGp ;
+            :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#FladenGp
+:FladenGp rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#FlounderFm
+:FlounderFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Limestone ,
+                           :Mudstone ;
+            :depositedIn :MarineDepositionalEnv ;
+            :hasAge :UpperCretaceous ;
+            :isMemberOf :ShetlandGp ;
+            :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#FluvialChannel
+:FluvialChannel rdf:type owl:NamedIndividual ,
+                         :FluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#FluvialDepositionalEnv
+:FluvialDepositionalEnv rdf:type owl:NamedIndividual ,
+                                 :FluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#FluvioDeltaicDepositionalEnvironment
+:FluvioDeltaicDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                               :DeltaicDepositionalEnvironment ,
+                                               :FluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#FluvioLacustrineDepositionalEnv
+:FluvioLacustrineDepositionalEnv rdf:type owl:NamedIndividual ,
+                                          :FluvialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#FluvioLacustrineDepositionalEnvironment
+:FluvioLacustrineDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                                  :LacustrineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Foraminifera
+:Foraminifera rdf:type owl:NamedIndividual ,
+                       :CalcareousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#ForeshoreDepositionalEnvironment
+:ForeshoreDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                           :BeachDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#FraserburghFm
+:FraserburghFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Mudstone ,
+                              :Siltstone ;
+               :depositedIn :TransitionalDepositionalEnv ;
+               :hasAge :Permian ;
+               :isMemberOf :RotliegendGp ;
+               :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#FulmarFm
+:FulmarFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Sandstone ;
+          :depositedIn :MarineDepositionalEnv ;
+          :hasAge :UpperJurassic ;
+          :isMemberOf :HumberGp ;
+          :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Gabbro
+:Gabbro rdf:type owl:NamedIndividual ,
+                 :IgneousIntrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#GlacialDepositionalEnv
+:GlacialDepositionalEnv rdf:type owl:NamedIndividual ,
+                                 :GlacialDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Gneiss
+:Gneiss rdf:type owl:NamedIndividual ,
+                 :MetamorphicFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#GolspieFm
+:GolspieFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Mudstone ;
+           :depositedIn :TransitionalDepositionalEnv ;
+           :hasAge :LowerJurassic ;
+           :isMemberOf :DunrobinBayGp ;
+           :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Granite
+:Granite rdf:type owl:NamedIndividual ,
+                  :IgneousIntrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#GrauerSalztonFm
+:GrauerSalztonFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Mudstone ;
+                 :depositedIn :MarineDepositionalEnv ;
+                 :hasAge :UpperPermian ;
+                 :isMemberOf :ZechsteinGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#GrenzanhydritFm
+:GrenzanhydritFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Anhydrite ;
+                 :depositedIn :ContinentalDepositionalEnv ;
+                 :hasAge :UpperPermian ;
+                 :isMemberOf :ZechsteinGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#GridSandstoneMb
+:GridSandstoneMb rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Mudstone ,
+                                :Sandstone ;
+                 :depositedIn :MarineDepositionalEnv ;
+                 :hasAge :Eocene ;
+                 :isMemberOf :StronsayGp ;
+                 :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HaisboroughGp
+:HaisboroughGp rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#HalibutCarbonateFm
+:HalibutCarbonateFm rdf:type owl:NamedIndividual ,
+                             :LithostratigraphicUnit ;
+                    :constitutedBy :Dolostone ,
+                                   :Limestone ;
+                    :depositedIn :MarineDepositionalEnv ;
+                    :hasAge :UpperPermian ;
+                    :isMemberOf :ZechsteinGp ;
+                    :locatedIn :NorthernNorthSea ,
+                               :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Halite
+:Halite rdf:type owl:NamedIndividual ,
+                 :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#HauptanhydritFm
+:HauptanhydritFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Anhydrite ;
+                 :depositedIn :TransitionalDepositionalEnv ;
+                 :hasAge :UpperPermian ;
+                 :isMemberOf :ZechsteinGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HauptdolomitFm
+:HauptdolomitFm rdf:type owl:NamedIndividual ,
+                         :LithostratigraphicUnit ;
+                :constitutedBy :Mudstone ;
+                :depositedIn :MarineDepositionalEnv ;
+                :hasAge :UpperPermian ;
+                :isMemberOf :ZechsteinGp ;
+                :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HeatherFm
+:HeatherFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Mudstone ,
+                          :Siltstone ;
+           :contains :Foraminifera ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :UpperJurassic ;
+           :isMemberOf :HumberGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HeronGp
+:HeronGp rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#HerringFm
+:HerringFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Limestone ,
+                          :Mudstone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :UpperCretaceous ;
+           :isMemberOf :ChalkGp ;
+           :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HidraFm
+:HidraFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Limestone ,
+                        :Mudstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :UpperCretaceous ;
+         :isMemberOf :ChalkGp ;
+         :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HopemanSandstoneFm
+:HopemanSandstoneFm rdf:type owl:NamedIndividual ,
+                             :LithostratigraphicUnit ;
+                    :constitutedBy :Sandstone ;
+                    :depositedIn :ContinentalDepositionalEnv ;
+                    :hasAge :Triassic ;
+                    :isMemberOf :HeronGp ;
+                    :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HordaFm
+:HordaFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ,
+                        :Sandstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :Eocene ;
+         :isMemberOf :StronsayGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HuginFm
+:HuginFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ,
+                        :Sandstone ,
+                        :Siltstone ;
+         :contains :Palynomorphs ;
+         :depositedIn :ContinentalDepositionalEnv ;
+         :hasAge :MiddleJurassic ;
+         :isMemberOf :FladenGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#HumberGp
+:HumberGp rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#IngeVolcanicDepositsFm
+:IngeVolcanicDepositsFm rdf:type owl:NamedIndividual ,
+                                 :LithostratigraphicUnit ;
+                        :constitutedBy :Basalt ;
+                        :depositedIn :ContinentalDepositionalEnv ;
+                        :hasAge :LowerPermian ;
+                        :isMemberOf :RotliegendGp ;
+                        :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#InnerShelfDepositionalEnvironment
+:InnerShelfDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                            :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#JorsalfareFm
+:JorsalfareFm rdf:type owl:NamedIndividual ,
+                       :LithostratigraphicUnit ;
+              :constitutedBy :Limestone ,
+                             :Mudstone ;
+              :depositedIn :MarineDepositionalEnv ;
+              :hasAge :UpperCretaceous ;
+              :isMemberOf :ShetlandGp ;
+              :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Jurassic
+:Jurassic rdf:type owl:NamedIndividual ,
+                   :JurassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#KupferschieferFm
+:KupferschieferFm rdf:type owl:NamedIndividual ,
+                           :LithostratigraphicUnit ;
+                  :constitutedBy :Dolostone ,
+                                 :Mudstone ;
+                  :depositedIn :MarineDepositionalEnv ;
+                  :hasAge :UpperPermian ;
+                  :isMemberOf :ZechsteinGp ;
+                  :locatedIn :NorthernNorthSea ,
+                             :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#KyrreFm
+:KyrreFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :UpperCretaceous ;
+         :isMemberOf :ShetlandGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#LacustrineDepositionalEnv
+:LacustrineDepositionalEnv rdf:type owl:NamedIndividual ,
+                                    :LacustrineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#LadysWalkFm
+:LadysWalkFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Mudstone ;
+             :depositedIn :MarineDepositionalEnv ;
+             :hasAge :LowerJurassic ;
+             :isMemberOf :DunrobinBayGp ;
+             :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#LagoonalDepositionalEnv
+:LagoonalDepositionalEnv rdf:type owl:NamedIndividual ,
+                                  :LagoonalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#LarkFm
+:LarkFm rdf:type owl:NamedIndividual ,
+                 :LithostratigraphicUnit ;
+        :constitutedBy :Mudstone ;
+        :depositedIn :MarineDepositionalEnv ;
+        :hasAge :Oligocene ;
+        :isMemberOf :WestrayGp ;
+        :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#LeineHaliteFm
+:LeineHaliteFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Halite ;
+               :depositedIn :TransitionalDepositionalEnv ;
+               :hasAge :UpperPermian ;
+               :isMemberOf :ZechsteinGp ;
+               :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Limestone
+:Limestone rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#ListaFm
+:ListaFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :Paleocene ;
+         :isMemberOf :MontroseGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#LossieheadFm
+:LossieheadFm rdf:type owl:NamedIndividual ,
+                       :LithostratigraphicUnit ;
+              :constitutedBy :Mudstone ,
+                             :Sandstone ,
+                             :Siltstone ;
+              :depositedIn :ContinentalDepositionalEnv ;
+              :hasAge :Triassic ;
+              :isMemberOf :HeronGp ;
+              :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerCarboniferous
+:LowerCarboniferous rdf:type owl:NamedIndividual ,
+                             :CarboniferousPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerCoastalPlain
+:LowerCoastalPlain rdf:type owl:NamedIndividual ,
+                            :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerCretaceous
+:LowerCretaceous rdf:type owl:NamedIndividual ,
+                          :LowerCretaceousEpoch ;
+                 :hasDirectNext :UpperCretaceous .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerJurassic
+:LowerJurassic rdf:type owl:NamedIndividual ,
+                        :LowerJurassicEpoch ;
+               :hasDirectNext :MiddleJurassic .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerPermian
+:LowerPermian rdf:type owl:NamedIndividual ,
+                       :PermianPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerShorefaceDepositionalEnvironment
+:LowerShorefaceDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                                :BeachDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#LowerTriassic
+:LowerTriassic rdf:type owl:NamedIndividual ,
+                        :LowerTriassicEpoch ;
+               :hasDirectNext :MiddleTriassic .
+
+
+###  http://no.sirius.ontology/geological-ontology#MacbethFm
+:MacbethFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Limestone ,
+                          :Mudstone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :UpperCretaceous ;
+           :isMemberOf :ShetlandGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#MackerelFm
+:MackerelFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Limestone ;
+            :depositedIn :MarineDepositionalEnv ;
+            :hasAge :UpperCretaceous ;
+            :isMemberOf :ChalkGp ;
+            :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#MainsFm
+:MainsFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ,
+                        :Sandstone ,
+                        :Siltstone ;
+         :contains :PollenSpores ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :LowerJurassic ;
+         :isMemberOf :DunrobinBayGp ;
+         :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Marble
+:Marble rdf:type owl:NamedIndividual ,
+                 :MetamorphicNonFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#MarineDepositionalEnv
+:MarineDepositionalEnv rdf:type owl:NamedIndividual ,
+                                :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Marl
+:Marl rdf:type owl:NamedIndividual ,
+               :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#MaureenFm
+:MaureenFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Mudstone ,
+                          :Sandstone ,
+                          :Siltstone ;
+           :contains :Foraminifera ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :Paleocene ;
+           :isMemberOf :MontroseGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#MidCarboniferous
+:MidCarboniferous rdf:type owl:NamedIndividual .
+
+
+###  http://no.sirius.ontology/geological-ontology#MidTriassic
+:MidTriassic rdf:type owl:NamedIndividual .
+
+
+###  http://no.sirius.ontology/geological-ontology#MiddleJurassic
+:MiddleJurassic rdf:type owl:NamedIndividual ,
+                         :MiddleJurassicEpoch ;
+                :hasDirectNext :UpperJurassic .
+
+
+###  http://no.sirius.ontology/geological-ontology#MiddleTriassic
+:MiddleTriassic rdf:type owl:NamedIndividual ,
+                         :MiddleTriassicEpoch ;
+                :hasDirectNext :UpperTriassic .
+
+
+###  http://no.sirius.ontology/geological-ontology#MillstoneGritFm
+:MillstoneGritFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Mudstone ,
+                                :Sandstone ,
+                                :Siltstone ;
+                 :depositedIn :MarineDepositionalEnv ;
+                 :hasAge :MidCarboniferous ;
+                 :isMemberOf :WhitehurstGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#MontroseGp
+:MontroseGp rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#MorayGp
+:MorayGp rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#MousaFm
+:MousaFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Sandstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :Eocene ;
+         :isMemberOf :StronsayGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Mudstone
+:Mudstone rdf:type owl:NamedIndividual ,
+                   :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#NansenFm
+:NansenFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Sandstone ;
+          :depositedIn :MarineDepositionalEnv ;
+          :hasAge :LowerJurassic ;
+          :isMemberOf :BanksGp ;
+          :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Neogene
+:Neogene rdf:type owl:NamedIndividual ,
+                  :NeogenePeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#NessFm
+:NessFm rdf:type owl:NamedIndividual ,
+                 :LithostratigraphicUnit ;
+        :constitutedBy :Coal ,
+                       :Sandstone ;
+        :depositedIn :TransitionalDepositionalEnv ;
+        :hasAge :MiddleJurassic ;
+        :isMemberOf :BrentGp ;
+        :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#NonFoliatedRocks
+:NonFoliatedRocks rdf:type owl:NamedIndividual ,
+                           :MetamorphicNonFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#NorthernNorthSea
+:NorthernNorthSea rdf:type owl:NamedIndividual ,
+                           :GeoArea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Obsidian
+:Obsidian rdf:type owl:NamedIndividual ,
+                   :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Oligocene
+:Oligocene rdf:type owl:NamedIndividual ,
+                    :PaleogenePeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#OpenMarine
+:OpenMarine rdf:type owl:NamedIndividual ,
+                     :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#OrganicRichShale
+:OrganicRichShale rdf:type owl:NamedIndividual ,
+                           :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#OrrinFm
+:OrrinFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Sandstone ,
+                        :Siltstone ;
+         :depositedIn :TransitionalDepositionalEnv ;
+         :hasAge :LowerJurassic ;
+         :isMemberOf :DunrobinBayGp ;
+         :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Ostracods
+:Ostracods rdf:type owl:NamedIndividual ,
+                    :CalcareousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#OuterShelfDepositionalEnvironment
+:OuterShelfDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                            :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Paleocene
+:Paleocene rdf:type owl:NamedIndividual ,
+                    :PaleogenePeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#Palynomorphs
+:Palynomorphs rdf:type owl:NamedIndividual ,
+                       :SiliceousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#PegmatitanhydritFm
+:PegmatitanhydritFm rdf:type owl:NamedIndividual ,
+                             :LithostratigraphicUnit ;
+                    :constitutedBy :Anhydrite ;
+                    :depositedIn :TransitionalDepositionalEnv ;
+                    :hasAge :UpperPermian ;
+                    :isMemberOf :ZechsteinGp ;
+                    :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Pegmatite
+:Pegmatite rdf:type owl:NamedIndividual ,
+                    :IgneousIntrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#PentlandFm
+:PentlandFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Mudstone ,
+                           :Sandstone ,
+                           :VolcanicDeposits ;
+            :contains :Palynomorphs ,
+                      :PollenSpores ;
+            :depositedIn :ContinentalDepositionalEnv ,
+                         :FluvioDeltaicDepositionalEnvironment ;
+            :hasAge :MiddleJurassic ;
+            :isMemberOf :FladenGp ;
+            :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Peridotite
+:Peridotite rdf:type owl:NamedIndividual ,
+                     :IgneousIntrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Permian
+:Permian rdf:type owl:NamedIndividual ,
+                  :PermianPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#Phyllite
+:Phyllite rdf:type owl:NamedIndividual ,
+                   :MetamorphicFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#PiperFm
+:PiperFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Sandstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :UpperJurassic ;
+         :isMemberOf :HumberGp ;
+         :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#PlattendolomitFm
+:PlattendolomitFm rdf:type owl:NamedIndividual ,
+                           :LithostratigraphicUnit ;
+                  :constitutedBy :Dolostone ,
+                                 :Mudstone ;
+                  :depositedIn :MarineDepositionalEnv ;
+                  :hasAge :UpperPermian ;
+                  :isMemberOf :ZechsteinGp ;
+                  :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#PollenSpores
+:PollenSpores rdf:type owl:NamedIndividual ,
+                       :SiliceousFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#ProdeltaDepositionalEnvironment
+:ProdeltaDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                          :DeltaicDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Pumice
+:Pumice rdf:type owl:NamedIndividual ,
+                 :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Quartzite
+:Quartzite rdf:type owl:NamedIndividual ,
+                    :MetamorphicNonFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Quaternary
+:Quaternary rdf:type owl:NamedIndividual ,
+                     :QuaternaryPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#Radiolarians
+:Radiolarians rdf:type owl:NamedIndividual ,
+                       :OrganicWalledFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#RannochFm
+:RannochFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Mudstone ,
+                          :Sandstone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :MiddleJurassic ;
+           :isMemberOf :BrentGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#ReefalDepositionalEnvironment
+:ReefalDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                        :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Rhyolite
+:Rhyolite rdf:type owl:NamedIndividual ,
+                   :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#RodbyFm
+:RodbyFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Limestone ,
+                        :Mudstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :LowerCretaceous ;
+         :isMemberOf :CromerKnollGp ;
+         :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#RotersalztonFm
+:RotersalztonFm rdf:type owl:NamedIndividual ,
+                         :LithostratigraphicUnit ;
+                :constitutedBy :Mudstone ;
+                :depositedIn :ContinentalDepositionalEnv ;
+                :hasAge :UpperPermian ;
+                :isMemberOf :ZechsteinGp ;
+                :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#RotliegendGp
+:RotliegendGp rdf:type owl:NamedIndividual ,
+                       :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#Salt
+:Salt rdf:type owl:NamedIndividual ,
+               :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Sandstone
+:Sandstone rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Schist
+:Schist rdf:type owl:NamedIndividual ,
+                 :MetamorphicFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#SchoonerFm
+:SchoonerFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Coal ,
+                           :Mudstone ,
+                           :Sandstone ;
+            :depositedIn :ContinentalDepositionalEnv ;
+            :hasAge :UpperCarboniferous ;
+            :isMemberOf :ConybeareGp ;
+            :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#ScoltHeadFm
+:ScoltHeadFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Anhydrite ,
+                            :Mudstone ;
+             :depositedIn :ContinentalDepositionalEnv ;
+             :hasAge :UpperPermian ;
+             :isMemberOf :ZechsteinGp ;
+             :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Scoria
+:Scoria rdf:type owl:NamedIndividual ,
+                 :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#ScremerstonFm
+:ScremerstonFm rdf:type owl:NamedIndividual ,
+                        :LithostratigraphicUnit ;
+               :constitutedBy :Mudstone ,
+                              :Sandstone ,
+                              :Siltstone ;
+               :depositedIn :TransitionalDepositionalEnv ;
+               :hasAge :LowerCarboniferous ;
+               :isMemberOf :FarneGp ;
+               :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#SedimentaryRocks
+:SedimentaryRocks rdf:type owl:NamedIndividual ,
+                           :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#SeleFm
+:SeleFm rdf:type owl:NamedIndividual ,
+                 :LithostratigraphicUnit ;
+        :constitutedBy :Mudstone ;
+        :depositedIn :TransitionalDepositionalEnv ;
+        :hasAge :Eocene ;
+        :isMemberOf :MorayGp ;
+        :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Shale
+:Shale rdf:type owl:NamedIndividual ,
+                :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShallowMarineDepositionalEnv
+:ShallowMarineDepositionalEnv rdf:type owl:NamedIndividual ,
+                                       :ShallowMarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShallowMarineToDeepMarineDepositionalEnvironment
+:ShallowMarineToDeepMarineDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                                           :DeepMarineDepositionalEnvironment ,
+                                                           :ShallowMarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShearwaterSaltFm
+:ShearwaterSaltFm rdf:type owl:NamedIndividual ,
+                           :LithostratigraphicUnit ;
+                  :constitutedBy :Halite ;
+                  :depositedIn :TransitionalDepositionalEnv ;
+                  :hasAge :UpperPermian ;
+                  :isMemberOf :ZechsteinGp ;
+                  :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShelfDepositionalEnvironment
+:ShelfDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                       :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShetlandGp
+:ShetlandGp rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#ShorefaceDepositionalEnvironment
+:ShorefaceDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                           :BeachDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#Silicoflagellates
+:Silicoflagellates rdf:type owl:NamedIndividual ,
+                            :OrganicWalledFossil .
+
+
+###  http://no.sirius.ontology/geological-ontology#Siltstone
+:Siltstone rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#SkadeFm
+:SkadeFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Sandstone ;
+         :depositedIn :MarineDepositionalEnv ;
+         :hasAge :Oligocene ;
+         :isMemberOf :WestrayGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#SkagerrakFm
+:SkagerrakFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Mudstone ,
+                            :Sandstone ;
+             :depositedIn :ContinentalDepositionalEnv ;
+             :hasAge :UpperTriassic ;
+             :isMemberOf :HeronGp ;
+             :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Slate
+:Slate rdf:type owl:NamedIndividual ,
+                :MetamorphicFoliatedRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#SlopeDepositionalEnvironment
+:SlopeDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                       :MarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#SmithBankFm
+:SmithBankFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Mudstone ;
+             :depositedIn :ContinentalDepositionalEnv ;
+             :hasAge :LowerTriassic ;
+             :isMemberOf :HeronGp ;
+             :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#SouthernNorthSea
+:SouthernNorthSea rdf:type owl:NamedIndividual ,
+                           :GeoArea .
+
+
+###  http://no.sirius.ontology/geological-ontology#SpekeFm
+:SpekeFm rdf:type owl:NamedIndividual ,
+                  :LithostratigraphicUnit ;
+         :constitutedBy :Mudstone ,
+                        :Sandstone ,
+                        :Siltstone ;
+         :contains :PollenSpores ;
+         :depositedIn :ContinentalDepositionalEnv ;
+         :hasAge :LowerJurassic ;
+         :isMemberOf :DunlinGp ;
+         :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Spiculite
+:Spiculite rdf:type owl:NamedIndividual ,
+                    :SedimentaryRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#StassfurtHaliteFm
+:StassfurtHaliteFm rdf:type owl:NamedIndividual ,
+                            :LithostratigraphicUnit ;
+                   :constitutedBy :Anhydrite ,
+                                  :Halite ;
+                   :depositedIn :ContinentalDepositionalEnv ;
+                   :hasAge :UpperPermian ;
+                   :isMemberOf :ZechsteinGp ;
+                   :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#StatfjordFm
+:StatfjordFm rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit ;
+             :constitutedBy :Mudstone ,
+                            :Sandstone ,
+                            :Siltstone ;
+             :depositedIn :ContinentalDepositionalEnv ;
+             :hasAge :LowerJurassic ;
+             :isMemberOf :BanksGp ;
+             :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#StotfieldCalcreteFm
+:StotfieldCalcreteFm rdf:type owl:NamedIndividual ,
+                              :LithostratigraphicUnit ;
+                     :constitutedBy :Limestone ,
+                                    :Mudstone ;
+                     :depositedIn :ContinentalDepositionalEnv ;
+                     :hasAge :LowerTriassic ;
+                     :isMemberOf :HeronGp ;
+                     :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#StronsayGp
+:StronsayGp rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#SubtidalPlatform
+:SubtidalPlatform rdf:type owl:NamedIndividual ,
+                           :TidalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#SvarteFm
+:SvarteFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Limestone ,
+                         :Mudstone ;
+          :depositedIn :MarineDepositionalEnv ;
+          :hasAge :UpperCretaceous ;
+          :isMemberOf :ShetlandGp ;
+          :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#TarbertFm
+:TarbertFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Sandstone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :MiddleJurassic ;
+           :isMemberOf :BrentGp ;
+           :locatedIn :NorthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#TaySandstoneMb
+:TaySandstoneMb rdf:type owl:NamedIndividual ,
+                         :LithostratigraphicUnit ;
+                :constitutedBy :Sandstone ;
+                :depositedIn :MarineDepositionalEnv ;
+                :hasAge :Eocene ;
+                :isMemberOf :StronsayGp ;
+                :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#TidalFlatDepositionalEnv
+:TidalFlatDepositionalEnv rdf:type owl:NamedIndividual ,
+                                   :TidalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#TidalPlatform
+:TidalPlatform rdf:type owl:NamedIndividual ,
+                        :TidalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#TorFm
+:TorFm rdf:type owl:NamedIndividual ,
+                :LithostratigraphicUnit ;
+       :constitutedBy :Limestone ;
+       :depositedIn :MarineDepositionalEnv ;
+       :hasAge :UpperCretaceous ;
+       :isMemberOf :ChalkGp ;
+       :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#TransitionalDepositionalEnv
+:TransitionalDepositionalEnv rdf:type owl:NamedIndividual .
+
+
+###  http://no.sirius.ontology/geological-ontology#Triassic
+:Triassic rdf:type owl:NamedIndividual ,
+                   :TriassicPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#TritonFm
+:TritonFm rdf:type owl:NamedIndividual ,
+                   :LithostratigraphicUnit ;
+          :constitutedBy :Anhydrite ,
+                         :Mudstone ;
+          :depositedIn :TransitionalDepositionalEnv ;
+          :hasAge :UpperTriassic ;
+          :isMemberOf :HaisboroughGp ;
+          :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#Tuff
+:Tuff rdf:type owl:NamedIndividual ,
+               :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#Turbidity-flowDeposit
+:Turbidity-flowDeposit rdf:type owl:NamedIndividual ,
+                                :DeepMarineDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#TurbotAnhydriteFm
+:TurbotAnhydriteFm rdf:type owl:NamedIndividual ,
+                            :LithostratigraphicUnit ;
+                   :constitutedBy :Anhydrite ;
+                   :depositedIn :TransitionalDepositionalEnv ;
+                   :hasAge :UpperPermian ;
+                   :isMemberOf :ZechsteinGp ;
+                   :locatedIn :NorthernNorthSea ,
+                              :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperCarboniferous
+:UpperCarboniferous rdf:type owl:NamedIndividual ,
+                             :CarboniferousPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperCoastalPlain
+:UpperCoastalPlain rdf:type owl:NamedIndividual ,
+                            :TransitionalDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperCretaceous
+:UpperCretaceous rdf:type owl:NamedIndividual ,
+                          :UpperCretaceousEpoch .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperJurassic
+:UpperJurassic rdf:type owl:NamedIndividual ,
+                        :UpperJurassicEpoch ;
+               :hasDirectNext :LowerCretaceous .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperPermian
+:UpperPermian rdf:type owl:NamedIndividual ,
+                       :PermianPeriod .
+
+
+###  http://no.sirius.ontology/geological-ontology#UpperTriassic
+:UpperTriassic rdf:type owl:NamedIndividual ,
+                        :UpperTriassicEpoch ;
+               :hasDirectNext :LowerJurassic .
+
+
+###  http://no.sirius.ontology/geological-ontology#UppershorefaceDepositionalEnvironment
+:UppershorefaceDepositionalEnvironment rdf:type owl:NamedIndividual ,
+                                                :BeachDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#ValhallFm
+:ValhallFm rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit ;
+           :constitutedBy :Limestone ,
+                          :Mudstone ;
+           :depositedIn :MarineDepositionalEnv ;
+           :hasAge :LowerCretaceous ;
+           :isMemberOf :CromerKnollGp ;
+           :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#VolcanicDepositionalEnv
+:VolcanicDepositionalEnv rdf:type owl:NamedIndividual ,
+                                  :VolcanicDepositionalEnvironment .
+
+
+###  http://no.sirius.ontology/geological-ontology#VolcanicDeposits
+:VolcanicDeposits rdf:type owl:NamedIndividual ,
+                           :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#VolcanicTuff
+:VolcanicTuff rdf:type owl:NamedIndividual ,
+                       :IgneousExtrusiveRock .
+
+
+###  http://no.sirius.ontology/geological-ontology#WerraanhydritFm
+:WerraanhydritFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Anhydrite ,
+                                :Dolostone ,
+                                :Halite ;
+                 :depositedIn :TransitionalDepositionalEnv ;
+                 :hasAge :UpperPermian ;
+                 :isMemberOf :ZechsteinGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#WestoeCoalFm
+:WestoeCoalFm rdf:type owl:NamedIndividual ,
+                       :LithostratigraphicUnit ;
+              :constitutedBy :Coal ,
+                             :Mudstone ;
+              :depositedIn :TransitionalDepositionalEnv ;
+              :hasAge :UpperCarboniferous ;
+              :isMemberOf :ConybeareGp ;
+              :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#WestrayGp
+:WestrayGp rdf:type owl:NamedIndividual ,
+                    :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#WhitehurstGp
+:WhitehurstGp rdf:type owl:NamedIndividual ,
+                       :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#WickSandstoneFm
+:WickSandstoneFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Mudstone ,
+                                :Sandstone ,
+                                :Siltstone ;
+                 :contains :CalcareousNannofossils ;
+                 :depositedIn :MarineDepositionalEnv ;
+                 :hasAge :LowerCretaceous ;
+                 :isMemberOf :CromerKnollGp ;
+                 :locatedIn :CentralNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#YoredaleFm
+:YoredaleFm rdf:type owl:NamedIndividual ,
+                     :LithostratigraphicUnit ;
+            :constitutedBy :Limestone ,
+                           :Mudstone ;
+            :depositedIn :MarineDepositionalEnv ;
+            :hasAge :MidCarboniferous ;
+            :isMemberOf :FarneGp ;
+            :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#ZechsteinGp
+:ZechsteinGp rdf:type owl:NamedIndividual ,
+                      :LithostratigraphicUnit .
+
+
+###  http://no.sirius.ontology/geological-ontology#ZechsteinkalkFm
+:ZechsteinkalkFm rdf:type owl:NamedIndividual ,
+                          :LithostratigraphicUnit ;
+                 :constitutedBy :Dolostone ,
+                                :Mudstone ;
+                 :depositedIn :MarineDepositionalEnv ;
+                 :hasAge :UpperPermian ;
+                 :isMemberOf :ZechsteinGp ;
+                 :locatedIn :SouthernNorthSea .
+
+
+###  http://no.sirius.ontology/geological-ontology#dinoflagellates
+:dinoflagellates rdf:type owl:NamedIndividual .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
