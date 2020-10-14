@@ -1,0 +1,16 @@
+Dataset,Neg. training samples,Train batch,LR,Epochs,MR,MRR,Hits@10
+GeoLit-Long,1,32,2,5,18,0.25,55
+GeoLit-Long,1,32,2,5,24,0.33,0.49
+GeoLit-Long,1,32,2,5,72,0.07,18
+GeoLit-Long,1,32,2,5,17,0.32,0.58
+GeoLit-Long,1,32,2,5,24,0.29,0.48
+GeoLit-Long,5,32,2,5,16,0.34,0.61
+GeoLit-Long,5,32,2,5,16,0.4,0.64
+GeoLit-Long,5,32,2,5,14,0.35,0.67
+GeoLit-Long,5,32,2,5,15,0.28,0.65
+GeoLit-Long,5,32,2,5,15,0.33,0.64
+GeoLit-Long,10,32,2,5,17,0.41,0.59
+GeoLit-Long,10,32,2,5,16,0.36,0.6
+GeoLit-Long,10,32,2,5,18,0.35,0.61
+GeoLit-Long,10,32,2,5,17,0.41,0.61
+GeoLit-Long,10,32,2,5,18,0.38,0.58

@@ -1,0 +1,9 @@
+Model,Dataset,Train batch,Learning rate,Epochs,MR,MRR,Hits@10,MR Left,MR Right,Hits@3 ,Hits@1
+scibert_base_uncased,GeoLit-Long,32,2,5,22,0.25,0.58,33,11,0.31,0.09
+scibert_base_uncased,GeoLit-Long,32,2,5,18,0.37,0.64,30,7,0.44,0.22
+scibert_base_uncased,GeoLit-Long,32,2,5,24,0.23,0.47,33,15,0.24,0.13
+bert_base_uncased,GeoLit-Long,32,2,5,16,0.34,0.61,25,7,0.41,0.18
+bert_base_uncased,GeoLit-Long,32,2,5,16,0.4,0.64,26,6,0.44,0.28
+bert_base_uncased,GeoLit-Long,32,2,5,14,0.35,0.67,23,7,0.42,0.19
+bert_base_uncased,GeoLit-Long,32,2,5,15,0.28,0.65,23,7,0.35,0.12
+bert_base_uncased,GeoLit-Long,32,2,5,15,0.33,0.65,24,6,0.39,0.17
