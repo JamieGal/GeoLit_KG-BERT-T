@@ -1,1 +1,23 @@
+RESULTS FOR BASELINE AND KG-BERT-T
 
+Baseline results:
+Contains two csv files with resutls for TransE and DistMult
+
+KG-BERT-T
+1)  Contains five csv files with different experimentation results
+2)  For GeoLit and GeoLit long, contains txt files for all experiments.
+    Understanding the folder and filenames:
+      e.g. 
+          L_32_2_5
+          
+          L - GeoLit-Long (or S for GeoLit)
+          32 - Train batch size
+          2 - Learning rate
+          5 - Epochs
+          
+      For individuals documents they also contain two additional numbers
+      e.g. 
+          L_32_2_5_19_60
+          
+          19 - Mean rank for this trial
+          60 - 0.60, the Hits@10 for this trila
