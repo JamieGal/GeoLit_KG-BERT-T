@@ -1,1 +1,15 @@
+1)	PREPROCESSING OF RAW "geolit.dv.csv" DATA
 
+    i)	Knowledge graph build and data processing
+    ii)	Add classes and individuals to the knowledge graph from geolit_db.csv
+    iii)	Extract triples from turtle file and remove URI
+    iv)	Knowledge graph metrics
+    v)	Split data to evaluation into train, validation, test
+    vi)	Extract entities and relations for modelling
+
+REQUIREMENTS:
+1) RDFLib
+2) CSV
+3) NUMPY
+4) PANDAS
+5) AMPLIGRAPH
