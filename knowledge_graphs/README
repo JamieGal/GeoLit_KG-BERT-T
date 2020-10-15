@@ -1,5 +1,7 @@
 RDF knowledge graph
 
+Best opened with an ontology editor e.g. Protege (https://protege.stanford.edu/)
+
 geolit.ttl - Turtle format
 
 geolit2.owl - OWL format (updated)
