@@ -6,6 +6,8 @@ KG-BERT-T FOR GEOSCIENCE: DOMAIN-SPECIFIC USE OF PRE-TRAINED NATURAL LANGUAGE PR
 
 MSc Data Science project 
 
+
+
 Repository contains:
 
 KG-BERT-T: full code (Google Colab) and best model outputs saved
