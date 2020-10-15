@@ -1,4 +1,4 @@
-#1)	PREPROCESSING OF RAW "geolit.dv.csv" DATA
+# 1)	PREPROCESSING OF RAW "geolit.dv.csv" DATA
 
     i)	    Knowledge graph build and data processing
     ii)	    Add classes and individuals to the knowledge graph from geolit_db.csv
